@@ -1,0 +1,47 @@
+1. How does a decision tree work?
+A decision tree splits the data into branches based on feature values to classify or predict outcomes. 
+At each node, it chooses the best feature to split the data by maximizing information gain or minimizing impurity.
+
+2. What is entropy and information gain?
+Entropy measures uncertainty or impurity in a dataset (0 = pure).
+Information Gain = reduction in entropy after a split.
+A feature with higher information gain is chosen for the split.
+
+3. How is random forest better than a single tree?
+Random Forest builds multiple trees using different subsets of data and features.
+It averages their predictions to reduce overfitting and improve generalization.
+More robust and less sensitive to noise.
+
+4. What is overfitting and how do you prevent it?
+Overfitting: Model memorizes training data but fails to generalize to unseen data.
+Prevent with:
+Pruning (limit depth, min samples)
+Cross-validation
+Ensemble methods like Random Forest
+
+5. What is bagging?
+Bootstrap Aggregating (Bagging): Randomly samples data with replacement to train multiple models, then aggregates their predictions.
+Used in Random Forests to reduce variance.
+
+6. How do you visualize a decision tree?
+Use export_graphviz() from sklearn.tree, and render with:
+import graphviz
+dot_data = export_graphviz(tree, feature_names=..., class_names=..., filled=True)
+graphviz.Source(dot_data).view()
+
+7. How do you interpret feature importance?
+Each feature’s importance reflects how much it reduces impurity across all trees (for Random Fore
+sts). Higher value = more useful for prediction. 
+Use:  model.feature_importances_
+and plot using matplotlib.
+
+8. What are the pros/cons of random forests?
+
+| ✅ Pros                             |           ❌ Cons                     |
+|-------------------------------------|----------------------------------------|
+| High accuracy                       | Less interpretable than a single tree  |
+| Handles missing data well           | Slower to train/test                   |
+| Robust to overfitting               | Not ideal for real-time use            |
+| Works for classification/regression | Feature importance can be biased       |
+
+                          *******
